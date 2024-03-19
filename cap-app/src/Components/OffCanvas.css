@@ -1,0 +1,36 @@
+.off-canvas-container {
+  position: relative;
+}
+
+.off-canvas-pane {
+  position: fixed;
+  top: 0;
+  left: -250px; /* Hide the pane initially outside the left side of the screen */
+  width: 250px;
+  height: 100%;
+  background-color: #f0f0f0;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000; /* Ensure the pane appears above other content */
+}
+
+.off-canvas-pane.open {
+  transform: translateX(0); /* Move the pane into view when it's open */
+}
+
+.off-canvas-content {
+  padding: 20px;
+}
+
+.off-canvas-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.off-canvas-content ul li {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.off-canvas-content ul li:hover {
+  color: blue;
+}
