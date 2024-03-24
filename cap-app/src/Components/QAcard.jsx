@@ -10,12 +10,12 @@ class QACard extends Component {
         <Container>
           <Row>
             
-              <h5>Question:</h5>
+              <h5>User:</h5>
               <p>{this.props.question}</p>
             
             
-              <h5>Answer:</h5>
-              <p>{this.props.answer}</p> \
+              <h5>Chatbot:</h5>
+              <p>{this.props.answer}</p>
           </Row>
         </Container>
       </Card.Body>

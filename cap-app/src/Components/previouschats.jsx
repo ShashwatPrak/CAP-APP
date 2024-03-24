@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-
+import { Link } from 'react-router-dom';
 const LeftPane = ({ usernm }) => {
   const [chats, setChats] = useState([]);
 
@@ -31,6 +31,7 @@ const LeftPane = ({ usernm }) => {
       chatButtons.push(
         <Row key={i} style={{ marginBottom: '10px' }}>
           <Col xs={9} style={{ backgroundColor: '#f8f9fa', width: '100%' }}>
+            <a onClick={() => { window.location.href = `/${chat.User}/${chat.chatname}` }}>
             <Button 
               block 
               variant="primary" 
@@ -38,7 +39,8 @@ const LeftPane = ({ usernm }) => {
               onClick={() => handleButtonClick(chat)}
             >
               {chat.chatname}
-            </Button>
+              </Button>
+              </a>
           </Col>
         </Row>
       );

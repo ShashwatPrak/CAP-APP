@@ -5,8 +5,9 @@ import { BrowserRouter as Router, Switch,Routes, Route, Link } from "react-route
 
 function App() {
   return (
-      <Routes>
+    <Routes>
       <Route path="/:usernm" exact element={<ChatPage />} />
+      <Route path="/:usernm/:chatcode" exact element={<ChatPage />} />
       </Routes>
   );
 }

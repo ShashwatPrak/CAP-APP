@@ -2,12 +2,22 @@ import React, { useState, useEffect } from 'react';
 import Navigationbar from '../Components/navbar';
 import MobileView from './MobileView';
 import DesktopView from './Desktopview';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const ChatPage = () => {
   const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
-  const usernm = location.pathname.split("/").slice(-1)[0];
+  const pathParams = location.pathname.split("/").filter(param => param !== "");
+  let usernm = null;
+  let chatcode = null;
+
+  if (pathParams.length >= 2) {
+    usernm = pathParams[pathParams.length - 2]; // Second last parameter
+    chatcode = pathParams[pathParams.length - 1]; // Last parameter
+  } else if (pathParams.length === 1) {
+    usernm = pathParams[pathParams.length - 1];
+    chatcode = '';// Last parameter
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -22,18 +32,12 @@ const ChatPage = () => {
     };
   }, []);
 
-  const appStyle = {
-    textAlign: 'center',
-    marginTop: '50px',
-    fontFamily: 'Arial, sans-serif',
-  };
-
   return (
     <>
-      <Navigationbar usernm={usernm } />
+      <Navigationbar usernm={usernm} />
       <div className={isMobile ? 'mobile' : 'desktop'}>
-        {isMobile && <MobileView usernm={ usernm} />}
-        {!isMobile && <DesktopView usernm={ usernm}/>}
+        {isMobile && <MobileView usernm={usernm} chatcode={chatcode} />}
+        {!isMobile && <DesktopView usernm={usernm} chatcode={chatcode} />}
       </div>
     </>
   );
